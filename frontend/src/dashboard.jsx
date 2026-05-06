@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import { useNavigate } from "react-router-dom";
+import TodoApp from "./TodoApp";
 
 function Dashboard() {
-  const { user, logout } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -11,9 +12,8 @@ function Dashboard() {
     navigate("/");
   };
   return (
-    <div className="flex flex-col items-center justify-center h-screen text-2xl gap-8">
-      <p>Welcome to Dashboard 🚀</p>
-      <p className="font-bold">Welcome: {user?.email}</p>
+    <div className="flex flex-col items-center justify-center h-auto text-2xl gap-8">
+      <TodoApp />
       <button
         className="w-48 h-10 bg-red-500 font-bold text-white hover:bg-red-800 text-center rounded-md cursor-pointer"
         onClick={handleLogout}

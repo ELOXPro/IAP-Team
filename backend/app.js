@@ -3,6 +3,7 @@ import authRoute from "./routes/authRoute.js";
 import cors from "cors";
 import mongoose from "mongoose";
 import userRoutes from "./routes/userRoutes.js";
+import todoRoute from "./routes/todoRoutes.js";
 
 const app = express();
 const PORT = 3000;
@@ -12,7 +13,7 @@ app.use(cors());
 
 // mongodb connection
 
-mongoose.connect("mongodb://localhost:27017/IAP")
+mongoose.connect("mongodb+srv://iap:1234@cluster0.mvc5jam.mongodb.net/Cluster0")
 .then(()=> console.log("DB connected"))
 .catch(err => console.log(err));
 
@@ -20,6 +21,7 @@ mongoose.connect("mongodb://localhost:27017/IAP")
 // routes
 app.use("/", authRoute);
 app.use("/users", userRoutes);
+app.use("/todos",todoRoute)
 
 // serve frontend
 app.use(express.static("frontend"));
